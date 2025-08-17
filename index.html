@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>748</title>
+<title>21 Yaş Hediyesi</title>
 <style>
   body {
     display: flex;
@@ -12,14 +12,14 @@
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #e0e0e0, #cfcfcf);
+    background: linear-gradient(135deg, #d9d9d9, #bfbfbf);
     font-family: 'Arial', sans-serif;
   }
 
   .gift-box {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 320px;
+    height: 320px;
     cursor: pointer;
     margin-bottom: 20px;
   }
@@ -28,10 +28,10 @@
   .box-body {
     width: 100%;
     height: 100%;
-    background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
+    background: linear-gradient(145deg, #2b2b2b, #444);
     border-radius: 20px;
     position: relative;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.45);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +43,8 @@
     position: absolute;
     top: 0;
     width: 100%;
-    height: 60%;
-    background: linear-gradient(145deg, #3d3d3d, #4a4a4a);
+    height: 55%;
+    background: linear-gradient(145deg, #3d3d3d, #555);
     border-radius: 20px 20px 0 0;
     transform-origin: top;
     transition: transform 0.6s;
@@ -52,13 +52,13 @@
   }
 
   .box-lid.open {
-    transform: rotateX(-180deg) translateY(-60%);
+    transform: rotateX(-180deg) translateY(-55%);
   }
 
   /* Fiyonk */
   .bow {
     position: absolute;
-    top: -30px;
+    top: -35px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
@@ -67,50 +67,49 @@
   }
 
   .bow .knot {
-    width: 30px;
-    height: 30px;
-    background: radial-gradient(circle, #ffd700, #b8860b);
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle, #e6c200, #b88a00);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255,215,0,0.7);
+    box-shadow: 0 0 12px rgba(230,194,0,0.7);
     z-index: 2;
   }
 
   .bow .loop {
-    width: 60px;
-    height: 40px;
+    width: 70px;
+    height: 50px;
     background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
     border-radius: 50% 50% 50% 50%;
-    margin: 0 5px;
-    box-shadow: 0 0 8px rgba(255,215,0,0.5);
+    margin: 0 6px;
+    box-shadow: 0 0 8px rgba(255,215,0,0.6);
   }
 
   .bow .tail {
     position: absolute;
     top: 20px;
-    width: 20px;
-    height: 50px;
+    width: 22px;
+    height: 60px;
     background: linear-gradient(180deg, #ffd700, #b8860b);
     z-index: 1;
+    border-radius: 5px;
   }
 
   .bow .tail.left {
-    left: -15px;
+    left: -25px;
     transform: rotate(-15deg);
-    border-radius: 5px;
   }
 
   .bow .tail.right {
-    right: -15px;
+    right: -25px;
     transform: rotate(15deg);
-    border-radius: 5px;
   }
 
   .gift-image {
-    width: 85%;
-    height: 85%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     display: none;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   .gift-image.show {
@@ -118,7 +117,7 @@
   }
 
   .gift-text {
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
     color: #2c2c2c;
     text-align: center;
@@ -126,23 +125,23 @@
 
   @media (max-width: 500px) {
     .gift-box {
-      width: 180px;
-      height: 180px;
+      width: 220px;
+      height: 220px;
     }
     .bow .loop {
-      width: 45px;
-      height: 30px;
+      width: 50px;
+      height: 35px;
     }
     .bow .knot {
       width: 20px;
       height: 20px;
     }
     .bow .tail {
-      width: 15px;
-      height: 40px;
+      width: 16px;
+      height: 45px;
     }
     .gift-text {
-      font-size: 1em;
+      font-size: 1.1em;
     }
   }
 </style>
@@ -159,7 +158,7 @@
     <div class="tail right"></div>
   </div>
   <div class="box-body">
-    <img src="hediye.jpeg" alt="Hediye" class="gift-image" id="giftImage">
+    <img src="hediye.jpg" alt="Hediye" class="gift-image" id="giftImage">
   </div>
 </div>
 
