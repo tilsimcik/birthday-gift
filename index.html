@@ -3,100 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>21. Yaş Günü Hediyesi</title>
+<title>Doğum Günü Hediyesi</title>
 <style>
   body {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0;
-    background:linear-gradient(135deg,#1a1a1a,#2b2b2b);
-    font-family:Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #e0e0e0, #cfcfcf);
+    font-family: 'Arial', sans-serif;
   }
 
-  .gift {
-    position:relative;
-    width:220px;
-    height:220px;
-    cursor:pointer;
-    perspective:1000px;
+  .gift-box {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    cursor: pointer;
+    margin-bottom: 20px;
   }
 
-  /* Kutunun gövdesi */
-  .box {
-    width:100%;
-    height:100%;
-    background:linear-gradient(145deg,#3a3a3a,#2a2a2a);
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.5);
-    position:relative;
-    overflow:hidden;
+  /* Kutu gövdesi */
+  .box-body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
 
-  /* Kurdele dikey */
-  .ribbon-vertical {
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:40px;
-    height:100%;
-    background:linear-gradient(180deg,#b8860b,#ffd700);
+  /* Kutu kapağı */
+  .box-lid {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(145deg, #3d3d3d, #4a4a4a);
+    border-radius: 20px 20px 0 0;
+    transform-origin: top;
+    transition: transform 0.6s;
+    z-index: 2;
   }
 
-  /* Kurdele yatay */
-  .ribbon-horizontal {
-    position:absolute;
-    left:0;
-    top:50%;
-    transform:translateY(-50%);
-    width:100%;
-    height:40px;
-    background:linear-gradient(90deg,#b8860b,#ffd700);
-  }
-
-  /* Kapak */
-  .lid {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:50%;
-    background:linear-gradient(145deg,#444,#333);
-    border-radius:12px 12px 0 0;
-    transform-origin:top;
-    transition:transform 0.7s;
-    z-index:2;
-  }
-
-  .lid.open {
-    transform:rotateX(-120deg);
+  .box-lid.open {
+    transform: rotateX(-180deg) translateY(-60%);
   }
 
   /* Fiyonk */
   .bow {
-    position:absolute;
-    top:-25px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    align-items:center;
-    z-index:3;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    align-items: center;
   }
 
-  .knot {
-    width:28px;
-    height:28px;
-    background:radial-gradient(circle,#ffd700,#b8860b);
-    border-radius:50%;
-    z-index:2;
+  .bow .knot {
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #ffd700, #b8860b);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255,215,0,0.7);
+    z-index: 2;
   }
 
-  .loop {
-    width:55px;
-    height:40px;
-    background:radial-gradient(circle at 30% 30%,#ffd700,#b8860b);
-    border-radius:50%;
-    margin:0 6px;
+  .bow .loop {
+    width: 60px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #ffd700, #b8860b);
+    border-radius: 50% 50% 50% 50%;
+    margin: 0 5px;
+    box-shadow: 0 0 8px rgba(255,215,0,0.5);
+  }
+
+  .bow .tail {
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 50px;
+    background: linear-gradient(180deg, #ffd700, #b8860b);
+    z-index: 1;
+  }
+
+  .bow .tail.left {
+    left: -15px;
+    transform: rotate(-15deg);
+    border-radius: 5px;
+  }
+
+  .bow .tail.right {
+    right: -15px;
+    transform: rotate(15deg);
+    border-radius: 5px;
+  }
+
+  .gift-image {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    display: none;
+    border-radius: 10px;
+  }
+
+  .gift-image.show {
+    display: block;
+  }
+
+  .gift-text {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c2c2c;
+    text-align: center;
+  }
+
+  @media (max-width: 500px) {
+    .gift-box {
+      width: 180px;
+      height: 180px;
+    }
+    .bow .loop {
+      width: 45px;
+      height: 30px;
+    }
+    .bow .knot {
+      width: 20px;
+      height: 20px;
+    }
+    .bow .tail {
+      width: 15px;
+      height: 40px;
+    }
+    .gift-text {
+      font-size: 1em;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="gift-box" id="giftBox">
+  <div class="box-lid" id="lid"></div>
+  <div class="bow">
+    <div class="tail left"></div>
+    <div class="loop"></div>
+    <div class="knot"></div>
+    <div class="loop"></div>
+    <div class="tail right"></div>
+  </div>
+  <div class="box-body">
+    <img src="hediye.jpg" alt="Hediye" class="gift-image" id="giftImage">
+  </div>
+</div>
+
+<div class="gift-text">21. yaş günü hediyen</div>
+
+<script>
+  const giftBox = document.getElementById('giftBox');
+  const lid = document.getElementById('lid');
+  const giftImage = document.getElementById('giftImage');
+
+  giftBox.addEventListener('click', () => {
+    lid.classList.toggle('open');
+    giftImage.classList.toggle('show');
+  });
+</script>
+
+</body>
+</html>
