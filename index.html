@@ -1,297 +1,102 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Elit 🎁 Hediye</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21. Yaş Günü Hediyesi</title>
 <style>
-  :root{
-    --box-size: 280px;        /* masaüstü boyutu; mobilde küçülüyor */
-    --dark1: #1f1f22;        /* koyu ana */
-    --dark2: #2b2b2f;        /* hafif parlak */
-    --gloss: rgba(255,255,255,0.06);
-    --gold: rgba(208,170,66,1);
-    --shadow: rgba(0,0,0,0.45);
-    --accent: linear-gradient(145deg, #2b2b2f, #1f1f22);
-  }
-
-  *{box-sizing:border-box}
-  body{
-    min-height:100vh;
-    margin:0;
+  body {
     display:flex;
-    align-items:center;
-    justify-content:center;
     flex-direction:column;
-    gap:14px;
-    background: linear-gradient(160deg,#ededed,#dcdcdc);
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
-    -webkit-font-smoothing:antialiased;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+    background:linear-gradient(135deg,#1a1a1a,#2b2b2b);
+    font-family:Arial, sans-serif;
   }
 
-  /* container */
-  .gift-wrap {
-    width: var(--box-size);
-    height: var(--box-size);
-    position: relative;
-    perspective: 1200px;
-    cursor: pointer;
-    touch-action: manipulation;
+  .gift {
+    position:relative;
+    width:220px;
+    height:220px;
+    cursor:pointer;
+    perspective:1000px;
   }
 
-  /* rounded emoji-like box */
-  .gift-root {
+  /* Kutunun gövdesi */
+  .box {
     width:100%;
     height:100%;
-    border-radius: 26%;
-    position: absolute;
-    left:0; top:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transform-style: preserve-3d;
-    transition: transform 0.35s ease;
-  }
-
-  /* vertical ribbon (front) */
-  .ribbon-vert{
-    position:absolute;
-    width:22%;
-    height:120%;
-    left:39%;
-    top:-10%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.2));
-    transform: rotate(-4deg);
-    border-radius:14px;
-    z-index:4;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25) inset;
-  }
-
-  /* horizontal ribbon */
-  .ribbon-hor{
-    position:absolute;
-    height:20%;
-    width:120%;
-    top:39%;
-    left:-10%;
-    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(0,0,0,0.18));
-    transform: rotate(4deg);
-    border-radius:14px;
-    z-index:4;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25) inset;
-  }
-
-  /* lid (üst parça) - emoji havası için biraz daha şişkin) */
-  .lid {
-    position:absolute;
-    width:86%;
-    height:56%;
-    top:6%;
-    left:7%;
-    border-radius: 22% 22% 18% 18%;
-    background: var(--accent);
-    box-shadow: 0 18px 30px var(--shadow), inset 0 6px 18px rgba(255,255,255,0.02);
-    transform-origin: 50% 0%;
-    transition: transform 0.7s cubic-bezier(.2,.9,.25,1);
-    z-index: 8;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:visible;
-  }
-
-  /* body (iç) */
-  .box-body {
-    position:absolute;
-    width:86%;
-    height:78%;
-    top:18%;
-    left:7%;
-    border-radius: 20% 20% 26% 26%;
-    background: linear-gradient(180deg,var(--dark2), var(--dark1));
-    box-shadow: 0 20px 30px rgba(0,0,0,0.45), inset 0 -6px 18px rgba(255,255,255,0.02);
-    z-index:5;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    background:linear-gradient(145deg,#3a3a3a,#2a2a2a);
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.5);
+    position:relative;
     overflow:hidden;
   }
 
-  /* parlak yansıma efektleri - emoji gibi dolgunluk hissi verir */
-  .gift-root::before{
-    content:"";
+  /* Kurdele dikey */
+  .ribbon-vertical {
     position:absolute;
-    left:6%;
-    top:6%;
-    width:60%;
-    height:36%;
-    border-radius:50%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
-    transform: rotate(-20deg);
-    pointer-events:none;
-    z-index:6;
-    filter: blur(6px);
-  }
-  .gift-root::after{
-    content:"";
-    position:absolute;
-    right:6%;
-    bottom:6%;
-    width:36%;
-    height:22%;
-    border-radius:40%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(255,255,255,0.02));
-    pointer-events:none;
-    z-index:3;
-    filter: blur(6px);
-  }
-
-  /* fiyonk - emoji stilinin merkezi */
-  .bow {
-    position:absolute;
-    top:10%;
+    top:0;
     left:50%;
     transform:translateX(-50%);
-    z-index:12;
+    width:40px;
+    height:100%;
+    background:linear-gradient(180deg,#b8860b,#ffd700);
+  }
+
+  /* Kurdele yatay */
+  .ribbon-horizontal {
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:100%;
+    height:40px;
+    background:linear-gradient(90deg,#b8860b,#ffd700);
+  }
+
+  /* Kapak */
+  .lid {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:50%;
+    background:linear-gradient(145deg,#444,#333);
+    border-radius:12px 12px 0 0;
+    transform-origin:top;
+    transition:transform 0.7s;
+    z-index:2;
+  }
+
+  .lid.open {
+    transform:rotateX(-120deg);
+  }
+
+  /* Fiyonk */
+  .bow {
+    position:absolute;
+    top:-25px;
+    left:50%;
+    transform:translateX(-50%);
     display:flex;
     align-items:center;
-    gap:8px;
-    pointer-events:none; /* tıklama kutuya gelsin */
+    z-index:3;
   }
 
-  .bow .loop {
-    width:64px; height:44px;
-    border-radius: 56% 44% 36% 44%;
-    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.14), var(--gold));
-    box-shadow: 0 6px 12px rgba(0,0,0,0.35);
-    transform-origin:center;
-  }
-
-  .bow .knot {
-    width:34px; height:34px;
+  .knot {
+    width:28px;
+    height:28px;
+    background:radial-gradient(circle,#ffd700,#b8860b);
     border-radius:50%;
-    background: radial-gradient(circle at 30% 30%, #fff6d6, #c69c2b);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
-    border: 2px solid rgba(255,255,255,0.04);
+    z-index:2;
   }
 
-  .bow .tail {
-    position:absolute;
-    top:46px;
-    width:18px; height:64px;
-    background: linear-gradient(180deg,#f7e6b0,#c69c2b);
-    border-radius:6px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.35);
-    transform-origin: top;
-  }
-  .bow .tail.left{ left: calc(50% - 62px); transform: rotate(-12deg); }
-  .bow .tail.right{ left: calc(50% + 44px); transform: rotate(12deg); }
-
-  /* içindeki resim - kutunun içinde düzgün görünmeli */
-  .gift-image {
-    width:92%;
-    height:92%;
-    object-fit:cover;
-    border-radius:12px;
-    display:block;
-    opacity:0;
-    transform: scale(0.98);
-    transition: opacity 0.45s ease, transform 0.45s ease;
-    z-index:6;
-  }
-
-  .gift-open .gift-image{
-    opacity:1;
-    transform: scale(1);
-  }
-
-  /* kapağın açık durumuna ait stil (rotateX yukarı doğru açma) */
-  .gift-open .lid{
-    transform: rotateX(-160deg) translateY(-8%);
-    box-shadow: 0 26px 40px rgba(0,0,0,0.55);
-  }
-
-  /* metin altındaki yazı */
-  .label {
-    font-weight:700;
-    color:#222;
-    font-size:18px;
-    letter-spacing:0.2px;
-  }
-
-  /* responsive */
-  @media (max-width:520px){
-    :root{ --box-size: 200px; }
-    .bow .loop{ width:48px; height:34px; }
-    .bow .knot{ width:24px; height:24px; }
-    .bow .tail{ width:14px; height:48px; top:36px; }
-    .label{ font-size:16px; }
-  }
-
-  /* küçük dokunuş: tıklayınca hafif basılma hissi */
-  .gift-wrap:active .gift-root{ transform: translateY(4px); transition:transform 0.12s; }
-</style>
-</head>
-<body>
-
-  <div class="gift-wrap" id="giftWrap" aria-label="21 yaş hediye kutusu" role="button" tabindex="0">
-    <div class="gift-root">
-      <div class="ribbon-vert" aria-hidden="true"></div>
-      <div class="ribbon-hor" aria-hidden="true"></div>
-
-      <div class="lid" id="lid"></div>
-
-      <div class="box-body">
-        <!-- hediye resmi: aynı klasöre hediye.jpg koy veya burada kendi dosya adını ver -->
-        <img src="hediye.jpg" alt="Hediye içi" class="gift-image" id="giftImage">
-      </div>
-
-      <div class="bow" aria-hidden="true">
-        <div class="tail left"></div>
-        <div class="loop"></div>
-        <div class="knot"></div>
-        <div class="loop"></div>
-        <div class="tail right"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="label">21. yaş günü hediyen</div>
-
-<script>
-  const wrap = document.getElementById('giftWrap');
-  const root = wrap.querySelector('.gift-root');
-  const lid = document.getElementById('lid');
-  const img = document.getElementById('giftImage');
-
-  function toggleOpen() {
-    root.classList.toggle('gift-open');
-    // resim görünürlüğünü (yüklenmişse) kontrol et
-    if(root.classList.contains('gift-open')){
-      // yüklenmemişse gösterilmesini bekle
-      if(img.complete){
-        img.style.opacity = '1';
-        img.style.transform = 'scale(1)';
-      } else {
-        img.addEventListener('load', () => {
-          img.style.opacity = '1';
-          img.style.transform = 'scale(1)';
-        }, {once:true});
-      }
-    } else {
-      img.style.opacity = '0';
-      img.style.transform = 'scale(0.98)';
-    }
-  }
-
-  // tıklama ve klavye ile erişim
-  wrap.addEventListener('click', toggleOpen);
-  wrap.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      toggleOpen();
-    }
-  });
-</script>
-</body>
-</html>
+  .loop {
+    width:55px;
+    height:40px;
+    background:radial-gradient(circle at 30% 30%,#ffd700,#b8860b);
+    border-radius:50%;
+    margin:0 6px;
