@@ -31,39 +31,40 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(145deg, #2c2c2c, #3a3a3a);
-    border-radius: 20px;
+    border-radius: 0 0 20px 20px;
     position: relative;
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    z-index: 1;
   }
 
   /* Kutu kapağı */
   .box-lid {
     position: absolute;
-    top: 0;
+    top: -60px; /* kapağı yukarı al */
     width: 100%;
-    height: 60%;
+    height: 70px;
     background: linear-gradient(145deg, #3d3d3d, #4a4a4a);
     border-radius: 20px 20px 0 0;
-    transform-origin: top;
+    transform-origin: bottom;
     transition: transform 0.6s;
-    z-index: 2;
+    z-index: 3;
   }
 
   .box-lid.open {
-    transform: rotateX(-180deg) translateY(-60%);
+    transform: rotateX(-120deg) translateY(-20px);
   }
 
   /* Fiyonk */
   .bow {
     position: absolute;
-    top: -35px;
+    top: -95px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3;
+    z-index: 4;
     display: flex;
     align-items: center;
   }
@@ -87,7 +88,6 @@
     position: relative;
   }
 
-  /* İç boşluk efekti */
   .bow .loop::after {
     content: "";
     position: absolute;
@@ -122,8 +122,8 @@
   }
 
   .gift-image {
-    width: 90%;
-    height: 90%;
+    width: 95%;
+    height: 95%;
     object-fit: contain;
     display: none;
     border-radius: 15px;
